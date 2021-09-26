@@ -70,108 +70,110 @@ class _CreateTeacherState extends State<CreateTeacher> {
                   ))
             ]),
         backgroundColor: backColor,
-        body: SingleChildScrollView(
-          child: Container(
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  inputFieldUsername("Enter Username", Icons.person, context,
-                      usernameController),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  inputFieldContact(
-                      "Enter Contact", Icons.phone, context, contactController),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width - 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: textColor),
-                        borderRadius: BorderRadius.circular(18)),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                      child: Row(
-                        children: [
-                          Icon(Icons.business, color: textColor),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          DropdownButton<String>(
-                            dropdownColor: btnColor,
-                            value: _chosenValue,
-                            //elevation: 5,
-                            style: TextStyle(color: Colors.white),
-                            iconEnabledColor: textColor,
-                            items: <String>[
-                              'Chemical',
-                              'Computer',
-                              'Mechinical',
-                              'Civil',
-                              'BioMedical',
-                              'Enviroment',
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                  value: value, child: text(value, 15));
-                            }).toList(),
-                            hint: text("Department", 16),
-                            onChanged: (String? value) {
-                              setState(() {
-                                _chosenValue = value;
-                              });
-                            },
-                          ),
-                        ],
+        body: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    inputFieldUsername("Enter Username", Icons.person, context,
+                        usernameController),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    inputFieldContact(
+                        "Enter Contact", Icons.phone, context, contactController),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: textColor),
+                          borderRadius: BorderRadius.circular(18)),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                        child: Row(
+                          children: [
+                            Icon(Icons.business, color: textColor),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            DropdownButton<String>(
+                              dropdownColor: btnColor,
+                              value: _chosenValue,
+                              //elevation: 5,
+                              style: TextStyle(color: Colors.white),
+                              iconEnabledColor: textColor,
+                              items: <String>[
+                                'Chemical',
+                                'Computer',
+                                'Mechinical',
+                                'Civil',
+                                'BioMedical',
+                                'Enviroment',
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                    value: value, child: text(value, 15));
+                              }).toList(),
+                              hint: text("Department", 16),
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _chosenValue = value;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  inputFieldemail(
-                      "Enter Email", Icons.mail, context, emailController),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  inputFieldPass("Enter Password", Icons.vpn_key, context,
-                      passwordController),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  text(
-                      "Login Email: " +
-                          usernameController.text.replaceAll(" ", "").toLowerCase() +
-                          postfix,
-                      16),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  GestureDetector(
-                      onTap: () {
-                        if (usernameController.text.isNotEmpty &&
-                            passwordController.text.isNotEmpty &&
-                            contactController.text.isNotEmpty &&
-                            emailController.text.isNotEmpty) {
-                          setState(() {
-                            createTeacher();
-                            print("Teacher Is Added");
-                            contactController.clear();
-                            passwordController.clear();
-                            emailController.clear();
+                    SizedBox(
+                      height: 20,
+                    ),
+                    inputFieldemail(
+                        "Enter Email", Icons.mail, context, emailController),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    inputFieldPass("Enter Password", Icons.vpn_key, context,
+                        passwordController),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    text(
+                        "Login Email: " +
+                            usernameController.text.replaceAll(" ", "").toLowerCase() +
+                            postfix,
+                        16),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          if (usernameController.text.isNotEmpty &&
+                              passwordController.text.isNotEmpty &&
+                              contactController.text.isNotEmpty &&
+                              emailController.text.isNotEmpty) {
+                            setState(() {
+                              createTeacher();
+                              print("Teacher Is Added");
+                              contactController.clear();
+                              passwordController.clear();
+                              emailController.clear();
 
-                            usernameController.clear();
-                          });
-                        }
-                      },
-                      child: btn("Create", 100)),
-                ],
+                              usernameController.clear();
+                            });
+                          }
+                        },
+                        child: btn("Create", 100)),
+                  ],
+                ),
               ),
             ),
           ),

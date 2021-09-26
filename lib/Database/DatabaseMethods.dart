@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseMethods {
-  uploadUserInfo(userMap) {
+  createAdmin(userMap) {
     FirebaseFirestore.instance.collection("admin_users").add(userMap);
   }
 
@@ -16,6 +16,12 @@ class DatabaseMethods {
     return await FirebaseFirestore.instance
         .collection("student_users")
         .add(createdStudentInfo);
+  }
+
+  createUniversity(createdUniversityMap) async {
+    return await FirebaseFirestore.instance
+        .collection("University")
+        .add(createdUniversityMap);
   }
 
   getStudentBy(String email) async {
@@ -33,6 +39,20 @@ class DatabaseMethods {
         .snapshots();
   }
 
+  Future<Stream<QuerySnapshot>> getSubject(String department) async {
+    return FirebaseFirestore.instance
+        .collection("subjects")
+        .where("Department", isEqualTo: department)
+        .snapshots();
+  }
+
+  Future<Stream<QuerySnapshot>> getLectures(String department) async {
+    return FirebaseFirestore.instance
+        .collection("lectures")
+        .where("department", isEqualTo: department)
+        .snapshots();
+  }
+
   Future<Stream<QuerySnapshot>> getTeachers() async {
     return FirebaseFirestore.instance
         .collection("teacher_users")
@@ -40,10 +60,31 @@ class DatabaseMethods {
         .snapshots();
   }
 
+  Future<Stream<QuerySnapshot>> getUniversity(String department) async {
+    return FirebaseFirestore.instance
+        .collection("University")
+        .where("Department_Name", isEqualTo: department)
+        .snapshots();
+  }
+
   Future<Stream<QuerySnapshot>> getStudentByEnroll(String enroll) async {
     return FirebaseFirestore.instance
         .collection("student_users")
         .where("StudentEnrollmentNo", isEqualTo: enroll)
+        .snapshots();
+  }
+
+  Future<Stream<QuerySnapshot>> getSubjectByCode(String code) async {
+    return FirebaseFirestore.instance
+        .collection("subjects")
+        .where("Subject_Code", isEqualTo: code)
+        .snapshots();
+  }
+
+  Future<Stream<QuerySnapshot>> getLecturesByDept(String department) async {
+    return FirebaseFirestore.instance
+        .collection("lectures")
+        .where("department", isEqualTo: department)
         .snapshots();
   }
 
@@ -95,7 +136,8 @@ class DatabaseMethods {
     print("Number of Subjects " + count.toString());
     return count;
   }
-    Future<int> noOfLectures() async {
+
+  Future<int> noOfLectures() async {
     QuerySnapshot<Map<String, dynamic>> snapshot =
         await FirebaseFirestore.instance.collection("lectures").get();
     var count = snapshot.size;

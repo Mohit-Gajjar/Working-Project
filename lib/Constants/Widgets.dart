@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 Widget inputFieldSem(String hint, IconData icon, BuildContext context,
     TextEditingController textEditingController) {
   return Container(
-    width: MediaQuery.of(context).size.width - 60,
+    width: 300,
     height: 60,
     decoration: BoxDecoration(
         border: Border.all(width: 2, color: textColor),
         borderRadius: BorderRadius.circular(18)),
     child: Center(
       child: TextField(
-        maxLength: 2,
+        maxLength: 1,
         keyboardType: TextInputType.number,
         controller: textEditingController,
         decoration: InputDecoration(
@@ -68,7 +68,7 @@ Widget text_underline(String name, double num) {
   );
 }
 
-Widget displayBox(String title,String subtitle, double titleSize, subtitleSize,
+Widget displayBox(String title, String subtitle, double titleSize, subtitleSize,
     BuildContext context) {
   return Card(
     color: btnColor,
@@ -150,16 +150,15 @@ Widget tbox(String title, subtitle, double titleSize, subtitleSize,
 Widget gridTile(String title, String assetImage, BuildContext context) {
   return Container(
     margin: EdgeInsets.all(5),
-    height: 160,
-    width: 220,
-
+    height: 100,
+    width: 150,
     decoration:
         BoxDecoration(color: btnColor, borderRadius: BorderRadius.circular(18)),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image(height: 70, image: AssetImage(assetImage)),
-        text(title, 15),
+        Image(height: 60, image: AssetImage(assetImage)),
+        text(title, 12),
       ],
     ),
   );
@@ -277,7 +276,7 @@ Widget inputFieldemail(String hint, IconData icon, BuildContext context,
 Widget inputFieldEnroll(String hint, IconData icon, BuildContext context,
     TextEditingController textEditingController) {
   return Container(
-    width: MediaQuery.of(context).size.width - 60,
+    width: 300,
     height: 60,
     decoration: BoxDecoration(
         border: Border.all(width: 2, color: textColor),

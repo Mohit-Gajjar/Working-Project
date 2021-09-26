@@ -34,27 +34,29 @@ class _EmailVerificationState extends State<EmailVerification> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          imageBox('assets/2.png', 300),
-          text("Vetification email is sent on", 16),
-          text(widget.email, 14),
-          SizedBox(
-            height: 40,
-          ),
-          GestureDetector(
-              onTap: () {
-                //   bool check;
-                //   check = checkEmailVerified() as bool;
-                //   if (check == false) {
-                //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                //   }
-                checkEmailVerified();
-              },
-              child: btn("Verified", 150))
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            imageBox('assets/2.png', 300),
+            text("Vetification email is sent on", 16),
+            text(widget.email, 14),
+            SizedBox(
+              height: 40,
+            ),
+            GestureDetector(
+                onTap: () {
+                  //   bool check;
+                  //   check = checkEmailVerified() as bool;
+                  //   if (check == false) {
+                  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  //   }
+                  checkEmailVerified();
+                },
+                child: btn("Verified", 150))
+          ],
+        ),
       ),
     );
   }

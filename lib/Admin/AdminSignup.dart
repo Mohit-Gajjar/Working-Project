@@ -4,6 +4,7 @@ import 'package:asms/Constants/Widgets.dart';
 import 'package:asms/Database/DatabaseMethods.dart';
 import 'package:asms/LocalDatabase/SharedPrefs.dart';
 import 'package:asms/OTP/Levels/EmailVerification.dart';
+import 'package:asms/University/ManageUniversity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,7 @@ class _AdminSiginUpState extends State<AdminSiginUp> {
           .adminSignUpWithEmailAndPassword(
               emailController.text, confirmPasswordController.text)
           .then((value) {
-        DatabaseMethods().uploadUserInfo(userInfoMap);
+        DatabaseMethods().createAdmin(userInfoMap);
         HelperFunctions.saveAdminNameSharedPreference(usernameController.text);
         HelperFunctions.saveAdminEmailSharedPreference(emailController.text);
         HelperFunctions.saveAdminLoggedInSharedPreference(true);
@@ -120,7 +121,21 @@ class _AdminSiginUpState extends State<AdminSiginUp> {
                           }
                         }
                       },
-                      child: btn("Create", 80))
+                      child: btn("Create", 100)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ManageUniversity()));
+                      },
+                      child: btn("Create University", 200)),
+                  SizedBox(
+                    height: 40,
+                  ),
                 ],
               ),
             ),

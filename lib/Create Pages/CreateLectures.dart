@@ -28,7 +28,9 @@ class _CreateLecturesState extends State<CreateLectures> {
         "Lecture_Name": lectureNameController.text,
         "Date": selectedDate,
         "From_Time": fromTimefinal,
-        "To_Time": toTimefinal
+        "To_Time": toTimefinal,
+        "department": "Computer"
+        //TODO Hardcode Department
       };
       DatabaseMethods().createLectureData(createdLecturesMap);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -97,66 +99,69 @@ class _CreateLecturesState extends State<CreateLectures> {
       appBar: AppBar(
         title: text("Create Lecture", 16),
         centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.transparent,
       ),
       body: Container(
         child: Form(
           key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 40,
-                ),
-                inputFieldUsername("Enter Subject Name", Icons.subject, context,
-                    subjectController),
-                SizedBox(
-                  height: 20,
-                ),
-                inputFieldUsername("Enter Lecture Name", Icons.subject, context,
-                    lectureNameController),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    width: MediaQuery.of(context).size.width - 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: textColor),
-                        borderRadius: BorderRadius.circular(18)),
-                    child: selectDate()),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    width: MediaQuery.of(context).size.width - 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: textColor),
-                        borderRadius: BorderRadius.circular(18)),
-                    child: fromTime()),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    width: MediaQuery.of(context).size.width - 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: textColor),
-                        borderRadius: BorderRadius.circular(18)),
-                    child: toTime()),
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                    onTap: () {
-                      if (subjectController.text.isNotEmpty &&
-                          lectureNameController.text.isNotEmpty) {
-                        createLectures();
-                      }
-                    },
-                    child: btn("Create", 100))
-              ],
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 40,
+                  ),
+                  inputFieldUsername("Enter Subject Name", Icons.subject,
+                      context, subjectController),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  inputFieldUsername("Enter Lecture Name", Icons.subject,
+                      context, lectureNameController),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: textColor),
+                          borderRadius: BorderRadius.circular(18)),
+                      child: selectDate()),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: textColor),
+                          borderRadius: BorderRadius.circular(18)),
+                      child: fromTime()),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      width: 300,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 2, color: textColor),
+                          borderRadius: BorderRadius.circular(18)),
+                      child: toTime()),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        if (subjectController.text.isNotEmpty &&
+                            lectureNameController.text.isNotEmpty) {
+                          createLectures();
+                        }
+                      },
+                      child: btn("Create", 100))
+                ],
+              ),
             ),
           ),
         ),

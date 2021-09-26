@@ -1,5 +1,6 @@
 import 'package:asms/Constants/Constants.dart';
 import 'package:asms/Constants/Widgets.dart';
+import 'package:asms/Create%20Pages/CreateTeacher.dart';
 import 'package:asms/Database/DatabaseMethods.dart';
 import 'package:asms/Management/Profiles/TeacherProfile.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,12 @@ class _ManageTeacherState extends State<ManageTeacher> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
+         actions: [
+          IconButton(
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CreateTeacher())),
+              icon: Icon(Icons.add))
+        ],
       ),
       body: Container(
         child: teacherList(),

@@ -31,42 +31,47 @@ class _CreateSubjectState extends State<CreateSubject> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backColor,
-      appBar: AppBar(
-        title: text("Create Subject", 16),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-      ),
-      body: Container(
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              inputFieldUsername("Enter Subject Name", Icons.subject, context,
-                  subjectController),
-              SizedBox(
-                height: 20,
-              ),
-              inputFieldContact("Enter Subject Code",
-                  Icons.format_list_numbered, context, subjectCodeController),
-              SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                  onTap: () {
-                    if (subjectController.text.isNotEmpty &&
-                        subjectCodeController.text.isNotEmpty) {
-                      createSubject();
-                    }
-                  },
-                  child: btn("Create", 100))
-            ],
-          ),
+        backgroundColor: backColor,
+        appBar: AppBar(
+          title: text("Create Subject", 16),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
-      ),
-    );
+        body: Container(
+            child: Form(
+                key: formKey,
+                child: Center(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 40,
+                        ),
+                        inputFieldUsername("Enter Subject Name", Icons.subject,
+                            context, subjectController),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        inputFieldContact(
+                            "Enter Subject Code",
+                            Icons.format_list_numbered,
+                            context,
+                            subjectCodeController),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              if (subjectController.text.isNotEmpty &&
+                                  subjectCodeController.text.isNotEmpty) {
+                                createSubject();
+                              }
+                            },
+                            child: btn("Create", 100))
+                      ],
+                    ),
+                  ),
+                ))));
   }
 }
